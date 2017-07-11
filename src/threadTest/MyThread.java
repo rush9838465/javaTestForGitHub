@@ -8,27 +8,34 @@ import static java.lang.Thread.sleep;
  * Created by 98384 on 2017/7/11.
  */
 public class MyThread implements Runnable{
-    int testi;
-    MyThread(int i){
-        testi = i;
+    public String name;
+
+    public MyThread(String name){
+        this.name = name;
     }
     public void run(){
-        System.out.println("This thread is run" + testi);
-        try{
-            Thread.currentThread().sleep(1000);
-        }catch (Exception e){
-
+        System.out.println("Thread "+ name + " start");
+        for(int i = 0; i < 3; i++) {
+            try{
+                Thread.currentThread().sleep(500);
+            }catch (Exception e){
+                System.out.println(e);
+            }
+            System.out.println("Thread "+ name + ": " + i);
         }
+        System.out.println("Thread "+ name + " exiting");
+    }
 
-        System.out.println("This thread is stop"+ testi);
+    public void threadStart(){
+        Thread t = new Thread(this, name);
+        t.start();
     }
 
     public static void main(String[] args) {
-        MyThread mt = new MyThread(1);
-        MyThread mt1 = new MyThread(2);
-        Thread t = new Thread(mt,"T1");
-        t.start();
-        Thread t1 = new Thread(mt1,"T2");
-        t1.start();
+        MyThread mt = new MyThread("zhou");
+        MyThread mt1 = new MyThread("he");
+
+        mt.threadStart();
+        mt1.threadStart();
     }
 }
