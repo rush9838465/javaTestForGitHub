@@ -1,6 +1,7 @@
 package listTest;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -8,9 +9,15 @@ import java.util.List;
  * Created by 98384 on 2017/7/8.
  */
 public class MyList {
-    public static void main(String[] args) {
-        List<String> testList = new ArrayList<String>();
 
+    public static void sMethod(){
+        System.out.println("sMethod");
+    }
+
+    public static void main(String[] args) {
+        MyList ml = new MyList();
+
+        List<String> testList = new ArrayList<String>();
         testList.add("one");
         testList.add("two");
         testList.add("three");
@@ -32,6 +39,19 @@ public class MyList {
         }
         //lamada
         testList.forEach((str)->System.out.println(str));
+
+//        List<String> list = Arrays.asList("1one", "two", "three", "4four");
+//        for(String str : list) {
+//            if (Character.isDigit(str.charAt(0))) {
+//                System.out.println(str);
+//            }
+//        }
+
+        List<String> list = Arrays.asList("1one", "two", "three", "4four");
+        list.stream()// 1.得到容器的Steam
+            .filter(str -> Character.isDigit(str.charAt(0)))// 2.选出以数字开头的字符串
+            .forEach(str -> System.out.println(str));// 3.输出字符串
+
 
     }
 }
