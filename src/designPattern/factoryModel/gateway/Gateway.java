@@ -1,4 +1,4 @@
-package designPattern.factoryModel;
+package designPattern.factoryModel.gateway;
 
 /**
  * Created by 98384 on 2017/7/11.

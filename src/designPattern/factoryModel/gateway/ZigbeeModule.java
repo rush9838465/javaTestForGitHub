@@ -1,9 +1,9 @@
-package designPattern.factoryModel;
+package designPattern.factoryModel.gateway;
 
 /**
  * Created by 98384 on 2017/7/11.
  */
-public class WifiModule implements Gateway{
+public class ZigbeeModule implements Gateway{
     String str;
 
     public void open(){
@@ -22,6 +22,4 @@ public class WifiModule implements Gateway{
     public void write(String str){
         this.str = str;
     }
-
-
 }
