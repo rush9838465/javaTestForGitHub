@@ -12,13 +12,15 @@ import static java.lang.Thread.sleep;
  */
 public class MyThread implements Runnable{
     public String name;
+    public int x;
 
-    public MyThread(String name){
+    public MyThread(String name, int x){
         this.name = name;
+        this.x = x;
     }
     public void run(){
         System.out.println("Thread "+ name + " start");
-        for(int i = 0; i < 3; i++) {
+        for(int i = 0; i < x; i++) {
             try{
                 Thread.sleep(500);
             }catch (Exception e){
@@ -26,7 +28,7 @@ public class MyThread implements Runnable{
             }
             System.out.println("Thread "+ name + ": " + i);
         }
-        System.out.println("Thread "+ name + " exiting");
+//        System.out.println("Thread "+ name + " exiting");
     }
 
     public void threadStart(boolean flag){
@@ -36,8 +38,8 @@ public class MyThread implements Runnable{
     }
 
     public static void main(String[] args) {
-        MyThread mt = new MyThread("zhou");
-        MyThread mt1 = new MyThread("he");
+        MyThread mt = new MyThread("zhou", 5);
+        MyThread mt1 = new MyThread("he", 10);
 
         mt.threadStart(false);
         mt1.threadStart(true);//如果都是守护进程将不执行任何线程而直接结束进程

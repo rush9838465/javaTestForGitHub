@@ -1,29 +1,27 @@
-package nettyTest.timerServerTest.server;
+package nettyTest.smartHomeProtoclTest.server;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import io.netty.handler.codec.DelimiterBasedFrameDecoder;
+
+import java.util.Arrays;
 
 /**
- * Created by 98384 on 2017/7/15.
+ * Created by 98384 on 2017/7/16.
  */
-public class TimeServerHandler extends SimpleChannelInboundHandler<Object> {
+public class ServerHandler extends SimpleChannelInboundHandler<Object>{
 
     @Override
     public void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception{
         ByteBuf buf = (ByteBuf) msg;
         byte[] req = new byte[buf.readableBytes()];
         buf.readBytes(req);
-        String body = new String(req, "UTF-8");
-        System.out.println("The time server receive order : " + body);
+        System.out.println(Arrays.toString(req));
 
-        String currentTime = "QUERY TIME ORDER".equalsIgnoreCase(body) ? new java.util.Date(System.currentTimeMillis()).toString() : "BAD ORDER";
-        System.out.println(currentTime);
-        ByteBuf resp = Unpooled.copiedBuffer(currentTime.getBytes());
-        ctx.write(resp);
+//        ctx.write(buf);
     }
+
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception{
         ctx.flush();

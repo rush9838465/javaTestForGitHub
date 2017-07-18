@@ -6,4 +6,11 @@ package designPattern.factoryModel.freeSwitch;
 public interface FreeSwitch {
     void close();
     void open();
+    default void start(){
+        System.out.print("333");
+    }
+    static void start1(){
+        System.out.print("333");
+    }
+
 }
