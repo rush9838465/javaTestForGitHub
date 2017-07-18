@@ -3,12 +3,12 @@ package synchronizedTest;
 /**
  * Created by 98384 on 2017/7/18.
  */
-public class Mysynchronized implements Runnable{
+public class MySynchronized implements Runnable{
     private static int st = 0;
 
     private String name;
 
-    public Mysynchronized(String name){
+    public MySynchronized(String name){
         this.name = name;
     }
 
@@ -25,8 +25,8 @@ public class Mysynchronized implements Runnable{
     }
 
     public static void main(String[] args) {
-        Mysynchronized m1 = new Mysynchronized("zhou");
-        Mysynchronized m2 = new Mysynchronized("he");
+        MySynchronized m1 = new MySynchronized("zhou");
+        MySynchronized m2 = new MySynchronized("he");
 
         Thread t1 = new Thread(m1, "zhou");
         Thread t2 = new Thread(m2, "he");
