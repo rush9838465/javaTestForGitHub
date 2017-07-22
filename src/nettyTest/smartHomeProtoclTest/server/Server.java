@@ -32,7 +32,6 @@ public class Server {
             workerGroup.shutdownGracefully();
         }
     }
-
     private class ChildChannelHandler extends ChannelInitializer<SocketChannel> {
         protected void initChannel(SocketChannel arg0) throws Exception{
             System.out.println("Timer server initChannel");
@@ -42,8 +41,8 @@ public class Server {
                     1,
                     4,
                     5,
-                    0));//TCP粘包处理
-            arg0.pipeline().addLast(new ServerHandler());
+                    0));//TCP粘包处理  1
+            arg0.pipeline().addLast(new ServerHandler());//2
 
         }
     }
