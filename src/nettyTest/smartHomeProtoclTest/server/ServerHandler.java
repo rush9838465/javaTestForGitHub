@@ -20,7 +20,8 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         buf.readBytes(req);
         System.out.println(Arrays.toString(req));
 
-//        ctx.write(buf);
+
+        ctx.write(buf);
     }
 
     @Override

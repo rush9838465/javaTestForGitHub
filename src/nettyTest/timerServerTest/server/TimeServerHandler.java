@@ -14,7 +14,15 @@ public class TimeServerHandler extends SimpleChannelInboundHandler<Object> {
     @Override
     public void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception{
         ByteBuf buf = (ByteBuf) msg;
-        byte[] req = new byte[buf.readableBytes()];
+        byte[] req;
+        if(buf.hasArray())
+        {
+            req = buf.array();
+        }
+        else{
+            req = new byte[buf.readableBytes()];
+        }
+        req[4] = 0;
         buf.readBytes(req);
         String body = new String(req, "UTF-8");
         System.out.println("The time server receive order : " + body);

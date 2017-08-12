@@ -6,7 +6,7 @@ package synchronizedTest;
 public class MySynchronized implements Runnable{
     private static int st = 0;
 
-    private String name;
+    volatile private String name;
 
     public MySynchronized(String name){
         this.name = name;
@@ -16,6 +16,9 @@ public class MySynchronized implements Runnable{
     {
         System.out.println(name + ": " + st);
         st++;
+
+
+
     }
 
     public void run(){
